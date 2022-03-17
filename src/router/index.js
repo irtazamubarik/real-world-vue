@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import EventList from '../views/EventList.vue';
 import About from '../views/About.vue';
 import EventDetails from '../views/EventDetails.vue';
+import EventCreate from '../views/EventCreate.vue';
 
 const routes = [
   {
@@ -17,8 +18,12 @@ const routes = [
   {
     path: '/event/:id',
     name: 'EventDetails',
-    props: (route) => ({ page: parseInt(route.query.page) || 1 }),
     component: EventDetails,
+  },
+  {
+    path: '/create',
+    name: 'EventCreate',
+    component: EventCreate,
   },
 ];
 

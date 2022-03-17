@@ -1,6 +1,5 @@
 <template>
   <h1>Create an event</h1>
-
   <div class="form-container">
     <form @submit.prevent="onSubmit">
       <label>Select a category: </label>
@@ -45,6 +44,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+import { v4 as uuidv4 } from 'uuid';
 export default {
   data() {
     return {
@@ -71,7 +72,10 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('Event:', this.event);
+      this.event.id = uuidv4();
+      this.event.organizer = this.$store.state.user;
+
+      this.$store.dispatch('createEvent', this.event);
     },
   },
 };
